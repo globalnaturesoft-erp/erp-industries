@@ -1,0 +1,23 @@
+<%= form_for([erp_industries, :backend, industry]) do |f| %>    
+    <%= erp_form_control("text", {
+        name: 'industry[name]',
+        value: industry.name,                   
+        label: t('.name'),
+        required: true,
+        errors: industry.errors.full_messages_for(:name)
+    }) %>
+    <%= erp_form_control("textarea", {
+        name: 'industry[description]',
+        value: industry.description,            
+        label: t('.description'),
+        required: true,
+        errors: industry.errors.full_messages_for(:description)
+    }) %>
+    <%= erp_component('button/save', {
+        text: t('submit')
+    }) %>
+    <%= erp_component('button/cancel', {
+        text: t('cancel'),
+        href: erp_industries.backend_industries_path
+    }) %>
+<% end %>

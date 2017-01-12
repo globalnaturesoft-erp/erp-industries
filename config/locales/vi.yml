@@ -1,0 +1,52 @@
+vi:
+  layouts:
+    erp:
+      backend:
+        sidebar:
+          industry: "Lĩnh vực kinh doanh"
+  erp:
+    industries:
+      backend:
+        industries:
+          create:
+            success: "Thêm lĩnh vực kinh doanh thành công."
+          update:
+            success: "Cập nhật lĩnh vực kinh doanh thành công."
+          destroy:
+            success: "Xóa lĩnh vực kinh doanh thành công."
+          delete_all:
+            success: "Xóa lĩnh vực kinh doanh được chọn thành công."
+          archive_all:
+            success: "Ẩn lĩnh vực kinh doanh được chọn thành công."
+          unarchive_all:
+            success: "Hiện lĩnh vực kinh doanh được chọn thành công."
+          index:
+            industries: "Lĩnh vực kinh doanh"
+            create: "Thêm lĩnh vực kinh doanh"
+            delete: "Xóa lĩnh vực kinh doanh"
+            industry_archived: "Lĩnh vực kinh doanh đã bị ẩn"
+            name: "Tên"
+            description: "Mô tả"
+          list:
+            name: "Tên"
+            description: "Mô tả"
+            delete: "Xóa lĩnh vực kinh doanh"
+          new:
+            industries: "Lĩnh vực kinh doanh"
+            create: "Thêm lĩnh vực kinh doanh"
+          edit:
+            industries: "Lĩnh vực kinh doanh"
+            create: "Thêm lĩnh vực kinh doanh"
+          form:
+            name: "Tên"
+            description: "Mô tả"
+  activerecord:
+    errors:
+      models:
+        erp/industries/industry:
+          attributes:
+            name:
+              blank: "không được trống."
+    attributes:
+      erp/industries/industry:
+        name: "Tên"
