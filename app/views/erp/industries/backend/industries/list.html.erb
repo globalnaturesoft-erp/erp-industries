@@ -1,5 +1,5 @@
-<div class="">
-    <table class="table table-advance table-hover table-striped table-checkable order-column" id="">
+<div class="row">
+    <table class="table table-advance table-hover table-striped table-checkable order-column">
         <thead>
             <tr>
                 <th width='1%'>
@@ -8,11 +8,6 @@
                 <% if get_columns(params).include?("name") %>
                     <th class="sortable" sort-by='erp_industries_industries.name'>
                         <%= t('.name') %>
-                    </th>
-                <% end %>
-                <% if get_columns(params).include?("description") %>
-                    <th>
-                        <%= t('.description') %>
                     </th>
                 <% end %>
                 <% if get_columns(params).include?("status") %>
@@ -42,9 +37,6 @@
                     <% if get_columns(params).include?("name") %>
                         <td><%= link_to industry.name, erp_industries.edit_backend_industry_path(industry) %></td>
                     <% end %>
-                    <% if get_columns(params).include?("description") %>
-                        <td><%= industry.description %></td>
-                    <% end %>
                     <% if get_columns(params).include?("status") %>
                     <td>
                         <% if industry.archived == true %>
@@ -71,12 +63,14 @@
                                     text: '<i class="fa fa-eye-slash"></i> '+t('archive'),
                                     url: erp_industries.archive_backend_industries_path(id: industry),
                                     data_method: 'PUT',
+                                    hide: industry.archived,
                                     class: 'ajax-link'
                                 },
                                 {
                                     text: '<i class="fa fa-eye"></i> '+t('unarchive'),
                                     url: erp_industries.unarchive_backend_industries_path(id: industry),
                                     data_method: 'PUT',
+                                    hide: !industry.archived,
                                     class: 'ajax-link'
                                 },
                                 {

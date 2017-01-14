@@ -14,6 +14,10 @@ vi:
             success: "Cập nhật lĩnh vực kinh doanh thành công."
           destroy:
             success: "Xóa lĩnh vực kinh doanh thành công."
+          archive:
+            success: "Ẩn lĩnh vực kinh doanh thành công."
+          unarchive:
+            success: "Hiện lĩnh vực kinh doanh thành công."
           delete_all:
             success: "Xóa lĩnh vực kinh doanh được chọn thành công."
           archive_all:
@@ -30,6 +34,7 @@ vi:
           list:
             name: "Tên"
             description: "Mô tả"
+            no_matching_records_found: "Danh sách lĩnh vực kinh doanh hiện tại đang trống."
             delete: "Xóa lĩnh vực kinh doanh"
           new:
             industries: "Lĩnh vực kinh doanh"
@@ -46,7 +51,7 @@ vi:
         erp/industries/industry:
           attributes:
             name:
-              blank: "không được trống."
+              blank: "không được để trống."
     attributes:
       erp/industries/industry:
-        name: "Tên"
+        name: "Tên lĩnh vực kinh doanh"

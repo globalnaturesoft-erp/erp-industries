@@ -3,14 +3,13 @@
 <% end %>
 
 <% content_for :page_title do %>
-    <i class="fa fa-file-text-o"></i> <%= t('.industries') %>
+    <i class="fa fa-industry"></i> <%= t('.industries') %>
 <% end %>
 
 <% content_for :page_toolbar do %>
     <%= erp_component('button/create', {
         text: t('.create'),
-        href: erp_industries.new_backend_industry_path,
-        class: 'btn-sm'
+        href: erp_industries.new_backend_industry_path
     }) %>
 <% end %>
 
@@ -52,16 +51,13 @@
             text: t('.name'), name: 'name', value: true, checked: true
         },
         {
-            text: t('.description'), name: 'description', value: true, checked: true
-        },
-        {
             text: t('status'), name: 'status', value: true, checked: true
         },
         {
-            text: t('creator'), name: 'creator', value: true, checked: false
+            text: t('creator'), name: 'creator', value: true, checked: true
         },
         {
-            text: t('created_at'), name: 'created_at', value: true, checked: false
+            text: t('created_at'), name: 'created_at', value: true, checked: true
         }
     ],
     sort: { sort_by: 'erp_industries_industries.created_at', sort_direction: 'desc' }
