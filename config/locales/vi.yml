@@ -4,6 +4,7 @@ vi:
       backend:
         sidebar:
           industry: "Lĩnh vực kinh doanh"
+          industries: "Danh sách lĩnh vực"
   erp:
     industries:
       backend:
@@ -15,36 +16,38 @@ vi:
           destroy:
             success: "Xóa lĩnh vực kinh doanh thành công."
           archive:
-            success: "Ẩn lĩnh vực kinh doanh thành công."
+            success: "Ngưng sử dụng lĩnh vực kinh doanh thành công."
           unarchive:
-            success: "Hiện lĩnh vực kinh doanh thành công."
+            success: "Sử dụng lại lĩnh vực kinh doanh thành công."
           delete_all:
             success: "Xóa lĩnh vực kinh doanh được chọn thành công."
           archive_all:
-            success: "Ẩn lĩnh vực kinh doanh được chọn thành công."
+            success: "Ngưng sử dụng lĩnh vực kinh doanh được chọn thành công."
           unarchive_all:
-            success: "Hiện lĩnh vực kinh doanh được chọn thành công."
+            success: "Sử dụng lại lĩnh vực kinh doanh được chọn thành công."
           index:
-            industries: "Lĩnh vực kinh doanh"
+            industries: "Danh sách lĩnh vực"
             create: "Thêm lĩnh vực kinh doanh"
             delete: "Xóa lĩnh vực kinh doanh"
-            industry_archived: "Lĩnh vực kinh doanh đã bị ẩn"
-            name: "Tên"
+            name: "Tên lĩnh vực"
             description: "Mô tả"
           list:
-            name: "Tên"
+            name: "Tên lĩnh vực"
             description: "Mô tả"
             no_matching_records_found: "Danh sách lĩnh vực kinh doanh hiện tại đang trống."
             delete: "Xóa lĩnh vực kinh doanh"
           new:
-            industries: "Lĩnh vực kinh doanh"
+            industries: "Danh sách lĩnh vực"
             create: "Thêm lĩnh vực kinh doanh"
           edit:
-            industries: "Lĩnh vực kinh doanh"
+            industries: "Danh sách lĩnh vực"
             create: "Thêm lĩnh vực kinh doanh"
           form:
-            name: "Tên"
+            name: "Tên lĩnh vực"
+            help_industry_name: "Tên lĩnh vực/ngành nghề kinh doanh"
+            placeholder_industry_name: "Nhập tên lĩnh vực"
             description: "Mô tả"
+            placeholder_industry_description: "Nhập mô tả cho lĩnh vực....."
   activerecord:
     errors:
       models:
@@ -54,4 +57,4 @@ vi:
               blank: "không được để trống."
     attributes:
       erp/industries/industry:
-        name: "Tên lĩnh vực kinh doanh"
+        name: "Tên lĩnh vực"

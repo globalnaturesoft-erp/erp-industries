@@ -3,6 +3,8 @@
         name: 'industry[name]',
         value: industry.name,                   
         label: t('.name'),
+        help: t('.help_industry_name'),
+        placeholder: t('.placeholder_industry_name'),
         required: true,
         errors: industry.errors.full_messages_for(:name)
     }) %>
@@ -10,6 +12,7 @@
         name: 'industry[description]',
         value: industry.description,            
         label: t('.description'),
+        placeholder: t('.placeholder_industry_description'),
         required: true,
         errors: industry.errors.full_messages_for(:description)
     }) %>

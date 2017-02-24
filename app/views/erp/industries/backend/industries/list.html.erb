@@ -1,103 +1,99 @@
-<div class="row">
-    <table class="table table-advance table-hover table-striped table-checkable order-column">
-        <thead>
-            <tr>
-                <th width='1%'>
-                    <%= erp_datalist_check_all %>
+<table class="table table-advance table-hover table-striped table-checkable order-column">
+    <thead>
+        <tr>
+            <th width='1%'>
+                <%= erp_datalist_check_all %>
+            </th>
+            <% if get_columns(params).include?("name") %>
+                <th class="sortable" sort-by='erp_industries_industries.name'>
+                    <%= t('.name') %>
                 </th>
+            <% end %>
+            <% if get_columns(params).include?("status") %>
+                <th>
+                    <%= t('status') %>
+                </th>
+            <% end %>
+            <% if get_columns(params).include?("creator") %>
+                <th>
+                    <%= t('creator') %>
+                </th>
+            <% end %>
+            <% if get_columns(params).include?("created_at") %>
+                <th class="sortable" sort-by='erp_industries_industries.created_at'>
+                    <%= t('created_at') %>
+                </th>
+            <% end %>
+            <th width="7%"><%= t('actions') %></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @industries.each do |industry| %>
+            <tr class="odd gradeX">
+                <td>
+                    <%= erp_datalist_check_row(id: industry.id) %>
+                </td>
                 <% if get_columns(params).include?("name") %>
-                    <th class="sortable" sort-by='erp_industries_industries.name'>
-                        <%= t('.name') %>
-                    </th>
+                    <td><%= link_to industry.name, erp_industries.edit_backend_industry_path(industry) %></td>
                 <% end %>
                 <% if get_columns(params).include?("status") %>
-                    <th>
-                        <%= t('status') %>
-                    </th>
+                <td>
+                    <% if industry.archived == true %>
+                    <span class="label label-sm label-danger"><%= t('archived') %></span>
+                    <% else %>
+                    <span class="label label-sm label-success"><%= t('active') %></span>
+                    <% end %> 
+                </td>
                 <% end %>
                 <% if get_columns(params).include?("creator") %>
-                    <th>
-                        <%= t('creator') %>
-                    </th>
+                    <td>
+                        <%= erp_component('avatar', {
+                            user: industry.creator
+                        }) %>
+                    </td>
                 <% end %>
                 <% if get_columns(params).include?("created_at") %>
-                    <th class="sortable" sort-by='erp_industries_industries.created_at'>
-                        <%= t('created_at') %>
-                    </th>
+                    <td><%= industry.created_at.strftime("%d/%m/%Y") %></td>
                 <% end %>
-                <th width="7%"><%= t('actions') %></th>
+                <td>
+                    <%= erp_datalist_row_actions(
+                        [
+                            {
+                                text: '<i class="fa fa-edit"></i> '+t('edit'),
+                                href: erp_industries.edit_backend_industry_path(industry)
+                            },
+                            {
+                                text: '<i class="fa fa-remove"></i> '+t('archive'),
+                                url: erp_industries.archive_backend_industries_path(id: industry),
+                                data_method: 'PUT',
+                                hide: industry.archived,
+                                class: 'ajax-link'
+                            },
+                            {
+                                text: '<i class="fa fa-check"></i> '+t('unarchive'),
+                                url: erp_industries.unarchive_backend_industries_path(id: industry),
+                                data_method: 'PUT',
+                                hide: !industry.archived,
+                                class: 'ajax-link'
+                            },
+                            {
+                                divider: true
+                            },
+                            {
+                                text: '<i class="fa fa-trash"></i> '+t('.delete'),
+                                url: erp_industries.backend_industry_path(industry),
+                                data_method: 'DELETE',
+                                class: 'ajax-link',
+                                data_confirm: t('delete_confirm')
+                            }
+                        ]
+                    ) %>
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            <% if @industries.each do |industry| %>
-                <tr class="odd gradeX">
-                    <td>
-                        <%= erp_datalist_check_row(id: industry.id) %>
-                    </td>
-                    <% if get_columns(params).include?("name") %>
-                        <td><%= link_to industry.name, erp_industries.edit_backend_industry_path(industry) %></td>
-                    <% end %>
-                    <% if get_columns(params).include?("status") %>
-                    <td>
-                        <% if industry.archived == true %>
-                        <span class="label label-sm label-danger"><%= t('archived') %></span>
-                        <% else %>
-                        <span class="label label-sm label-success"><%= t('active') %></span>
-                        <% end %> 
-                    </td>
-                    <% end %>
-                    <% if get_columns(params).include?("creator") %>
-                        <td>
-                            <%= erp_component('avatar', {
-                                user: industry.creator
-                            }) %>
-                        </td>
-                    <% end %>
-                    <% if get_columns(params).include?("created_at") %>
-                        <td><%= industry.created_at.strftime("%d/%m/%Y") %></td>
-                    <% end %>
-                    <td>
-                        <%= erp_datalist_row_actions(
-                            [
-                                {
-                                    text: '<i class="fa fa-edit"></i> '+t('edit'),
-                                    href: erp_industries.edit_backend_industry_path(industry)
-                                },
-                                {
-                                    text: '<i class="fa fa-eye-slash"></i> '+t('archive'),
-                                    url: erp_industries.archive_backend_industries_path(id: industry),
-                                    data_method: 'PUT',
-                                    hide: industry.archived,
-                                    class: 'ajax-link'
-                                },
-                                {
-                                    text: '<i class="fa fa-eye"></i> '+t('unarchive'),
-                                    url: erp_industries.unarchive_backend_industries_path(id: industry),
-                                    data_method: 'PUT',
-                                    hide: !industry.archived,
-                                    class: 'ajax-link'
-                                },
-                                {
-                                    divider: true
-                                },
-                                {
-                                    text: '<i class="fa fa-trash"></i> '+t('.delete'),
-                                    url: erp_industries.backend_industry_path(industry),
-                                    data_method: 'DELETE',
-                                    class: 'ajax-link',
-                                    data_confirm: t('delete_confirm')
-                                }
-                            ]
-                        ) %>
-                    </td>
-                </tr>
-            <% end.empty? %>
-                <tr>
-                    <td colspan="7"><%= t('.no_matching_records_found') %></td>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
-</div>
-        
+        <% end %>
+    </tbody>
+</table>
+<% if @industries.empty? %>
+    <div class="datalist-empty-line"><%= t('.no_matching_records_found') %></div>
+<% end %>       
 <%= erp_datalist_pagination(@industries) %>

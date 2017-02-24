@@ -1,5 +1,3 @@
-require_dependency "erp/backend/backend_controller"
-
 module Erp
   module Industries
     module Backend
@@ -79,10 +77,10 @@ module Erp
           end
         end
         
+        # ARCHIVE /industries/archive?id=1
         def archive
           @industry.archive
           respond_to do |format|
-            format.html { redirect_to erp_industries.backend_industries_path, notice: t('.success') }
             format.json {
               render json: {
                 'message': t('.success'),
@@ -92,10 +90,10 @@ module Erp
           end
         end
         
+        # UNARCHIVE /industries/archive?id=1
         def unarchive
           @industry.unarchive
           respond_to do |format|
-            format.html { redirect_to erp_industries.backend_industries_path, notice: t('.success') }
             format.json {
               render json: {
                 'message': t('.success'),
@@ -105,7 +103,7 @@ module Erp
           end
         end
         
-        # DELETE /industries/delete_all?ids=1,2,3
+        # DELETE ALL /industries/delete_all?ids=1,2,3
         def delete_all         
           @industries.destroy_all
           
@@ -119,7 +117,7 @@ module Erp
           end          
         end
         
-        # Archive /industries/archive_all?ids=1,2,3
+        # ARCHIVE ALL /industries/archive_all?ids=1,2,3
         def archive_all         
           @industries.archive_all
           
@@ -133,7 +131,7 @@ module Erp
           end          
         end
         
-        # Unarchive /industries/unarchive_all?ids=1,2,3
+        # UNARCHIVE ALL /industries/unarchive_all?ids=1,2,3
         def unarchive_all
           @industries.unarchive_all
           
@@ -147,6 +145,7 @@ module Erp
           end          
         end
         
+        # DATASELECT
         def dataselect
           respond_to do |format|
             format.json {
